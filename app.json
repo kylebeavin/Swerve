@@ -4,10 +4,14 @@
     "slug": "Swerve",
     "privacy": "public",
     "sdkVersion": "32.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "ios": {
+      "bundleIdentifier": "com.SwerveGo.Swerve" }
+    },
+    "android": {
+      "package": "com.SwerveGo.Swerve",
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyAa-toKOQ0BY1U--9LUmFzKQjoyQjw7xnA" }
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
