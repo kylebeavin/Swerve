@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from "react-native";
 import { MapView } from "expo";
 
-class KillaScreen extends React.Component {
-    constructor(props) {
+class KillaScreen extends React.Component { 
+    constructor(props) { 
         super(props);
 
         this.state = {
@@ -33,19 +33,41 @@ class KillaScreen extends React.Component {
             });
     }
 
+    renderMarkers() {
+        return this.state.isLoading 
+        ? null
+        : this.state.markers.map((marker,index) => {
+            const coords = {
+                latitude: marker.latitude,
+                longitude: marker.longitude
+            };
+
+            const metadata = `Status: ${marker.statusValue}`;
+
+            return(
+                <MapView.Marker
+                  key={index}
+                  coordinate={coords}
+                  title={marker.stationName}
+                  description={metadata}
+                />  
+            );
+        });
+    }
+
     render() {
         return(
             <MapView
-            style={{
-              flex: 1
-            }}
+            style={{ flex: 1 }}
             initialRegion={{
               latitude: 39.768402,
               longitude: -86.158066,
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421
             }}
-          />
+            >
+            {this.renderMarkers()}
+            </MapView>
         );
     }
 } 
